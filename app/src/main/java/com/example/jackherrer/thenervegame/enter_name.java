@@ -1,6 +1,7 @@
 package com.example.jackherrer.thenervegame;
 
 import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,17 @@ public class enter_name extends AppCompatActivity {
     }
 
 
+
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+
     public void name_entered(View view) {
 
         // get data to pass to highscore
@@ -37,6 +49,11 @@ public class enter_name extends AppCompatActivity {
 
         startActivity(to_highscore);
         finish();
+
+    }
+
+    public void take_picture(View view) {
+        dispatchTakePictureIntent();
 
     }
 }

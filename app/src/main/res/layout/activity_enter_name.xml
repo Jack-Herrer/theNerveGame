@@ -40,4 +40,18 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="name_entered"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Take picture"
+        android:id="@+id/take_picture_button"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="take_picture"/>
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/user_picture_view"
+        android:layout_below="@+id/take_picture_button"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
