@@ -19,7 +19,7 @@ public class highscore extends AppCompatActivity {
         TextView score_view = (TextView)findViewById(R.id.score_highscore);
 
         username_view.setText(username);
-        score_view.setText(""+score);
+        score_view.setText("Score: "+score);
 
     }
 
