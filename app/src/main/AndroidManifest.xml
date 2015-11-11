@@ -15,10 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".in_game"
-            android:configChanges="orientation|screenSize">
+        <activity
+            android:name=".in_game"
+            android:configChanges="orientation|screenSize" >
         </activity>
         <activity android:name=".enter_name" >
+        </activity>
+        <activity android:name=".highscore" >
         </activity>
     </application>
 
