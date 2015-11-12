@@ -11,5 +11,26 @@
         android:layout_height="wrap_content"
         android:text="start game"
         android:id="@+id/start_game_button"
-        android:onClick="new_game_click"/>
+        android:onClick="new_game_click"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HIGH SCORE"
+        android:id="@+id/main_menu_highscore_button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="to_highscore"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QUIT"
+        android:id="@+id/main_menu_quit_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="main_menu_quit_click"/>
 </RelativeLayout>

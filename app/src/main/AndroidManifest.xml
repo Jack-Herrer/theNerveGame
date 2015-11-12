@@ -22,9 +22,10 @@
             android:name=".in_game"
             android:configChanges="orientation|screenSize" >
         </activity>
-        <activity android:name=".enter_name" >
+        <activity android:name=".enter_name">
         </activity>
-        <activity android:name=".highscore" >
+        <activity android:name=".highscore"
+            >
         </activity>
     </application>
 
