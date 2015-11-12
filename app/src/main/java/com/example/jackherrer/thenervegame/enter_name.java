@@ -12,7 +12,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class enter_name extends AppCompatActivity {
 
@@ -49,13 +53,24 @@ public class enter_name extends AppCompatActivity {
             ImageView user_picture = (ImageView)findViewById(R.id.user_picture_view);
             user_picture.setImageBitmap(imageBitmap);
 
-            //broadcast user image
-            Intent broadcast_img = new Intent();
-            broadcast_img.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
-            broadcast_img.setAction("com.example.Broadcast");
-            broadcast_img.putExtra("user_image", imageBitmap);
-            sendBroadcast(broadcast_img);
+            FileOutputStream fos = null;
+            try {
+                fos = openFileOutput("user_photo_file", Context.MODE_PRIVATE);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
 
+            if (imageBitmap != null) {
+                imageBitmap.compress(Bitmap.CompressFormat.JPEG,100,fos);
+            }
+
+            try {
+                if (fos != null) {
+                    fos.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         }
     }
@@ -78,20 +93,17 @@ public class enter_name extends AppCompatActivity {
         editor.putInt("score_pref", score);
         editor.commit();
 
-        String SCORE_FILENAME = "score_file";
+
+
 
 //        FileOutputStream score_file = null;
 //        openFileOutput(SCORE_FILENAME, Context.MODE_PRIVATE);
 //        score_file.write(score.getBytes());
 
 
-        String FILENAME = "hello_file";
-        String string = "hello world!";
-
 //        FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
 //        fos.write(string.getBytes());
 //        fos.close();
-
 
 
 

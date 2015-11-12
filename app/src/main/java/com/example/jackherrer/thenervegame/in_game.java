@@ -1,6 +1,7 @@
 package com.example.jackherrer.thenervegame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,9 +27,19 @@ public class in_game extends AppCompatActivity {
     }
 
     public void on_finish_game_click(View view) {
-        Intent to_name_entry = new Intent(this, enter_name.class);
-        to_name_entry.putExtra("score", counter);
-        startActivity(to_name_entry);
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        int highscore = prefs.getInt("score_pref", 0);
+
+        if(counter > highscore) {
+            Intent to_name_entry = new Intent(this, enter_name.class);
+            to_name_entry.putExtra("score", counter);
+            startActivity(to_name_entry);
+        }
+        else{
+            Intent to_highscore = new Intent(this, highscore.class);
+            startActivity(to_highscore);
+        }
         finish();
 
     }
