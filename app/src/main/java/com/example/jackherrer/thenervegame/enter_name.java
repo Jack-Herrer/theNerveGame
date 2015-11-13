@@ -53,6 +53,7 @@ public class enter_name extends AppCompatActivity {
             ImageView user_picture = (ImageView)findViewById(R.id.user_picture_view);
             user_picture.setImageBitmap(imageBitmap);
 
+            // Write file to internal memory
             FileOutputStream fos = null;
             try {
                 fos = openFileOutput("user_photo_file", Context.MODE_PRIVATE);
@@ -72,6 +73,10 @@ public class enter_name extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+            // make sure whether pic taken is true in case of restart by changing orientation
+            SharedPreferences.Editor editor = getSharedPreferences("prefs", MODE_PRIVATE).edit();
+            editor.putBoolean("name_entry_pic_taken", true);
+            editor.commit();
         }
     }
 
@@ -92,20 +97,6 @@ public class enter_name extends AppCompatActivity {
         editor.putString("user_name_pref", username);
         editor.putInt("score_pref", score);
         editor.commit();
-
-
-
-
-//        FileOutputStream score_file = null;
-//        openFileOutput(SCORE_FILENAME, Context.MODE_PRIVATE);
-//        score_file.write(score.getBytes());
-
-
-//        FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
-//        fos.write(string.getBytes());
-//        fos.close();
-
-
 
         startActivity(to_highscore);
         finish();

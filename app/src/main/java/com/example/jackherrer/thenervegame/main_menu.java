@@ -1,5 +1,6 @@
 package com.example.jackherrer.thenervegame;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,11 @@ public class main_menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        //set pic taken on false
+        SharedPreferences.Editor editor = getSharedPreferences("prefs", MODE_PRIVATE).edit();
+        editor.putBoolean("name_entry_pic_taken", false);
+        editor.commit();
     }
 
     public void new_game_click(View view) {
